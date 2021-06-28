@@ -1,8 +1,10 @@
 import './App.css';
+import { BrowserRouter as Router, Route } from '@types/react-router-dom';
 import styled from 'styled-components';
 import AddForm from './Components/Form/AddForm';
 import ItemsList from './Components/ItemsList/ItemsList';
 import Filter from './Components/Filter/Filter';
+import React from "react";
 
 const Container = styled.div`
   width: 50%;
@@ -11,11 +13,13 @@ const Container = styled.div`
 
 function App() {
   return (
-    <Container className="app">
-      <AddForm/>
-      <Filter />
-      <ItemsList />
-    </Container>
+    <Router>
+      <Container className="app">
+        <AddForm/>
+        <Filter />
+        <ItemsList />
+      </Container>
+    </Router>
   );
 }
 
