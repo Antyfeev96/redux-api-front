@@ -1,10 +1,9 @@
 import './App.css';
-import { BrowserRouter as Router, Route } from '@types/react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import styled from 'styled-components';
-import AddForm from './Components/Form/AddForm';
-import ItemsList from './Components/ItemsList/ItemsList';
-import Filter from './Components/Filter/Filter';
 import React from "react";
+import MainPage from "./Components/MainPage/MainPage";
+import { Redirect } from "react-router";
 
 const Container = styled.div`
   width: 50%;
@@ -15,9 +14,12 @@ function App() {
   return (
     <Router>
       <Container className="app">
-        <AddForm/>
-        <Filter />
-        <ItemsList />
+        <Redirect to="/services" />
+        <Switch>
+            <Route path='/services'>
+              <MainPage />
+            </Route>
+        </Switch>
       </Container>
     </Router>
   );
