@@ -9,6 +9,8 @@ const api = new API();
 
 function MainPage(): JSX.Element {
   api.fetchItems().then(value => console.log(value));
+  api.deleteItem(1).then(data => data);
+  api.fetchItems().then(value => console.log(value));
   return (
     <Fragment>
       <AddForm/>

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux'
 import { editItem, changeEditedId, removeItem } from '../../Reducers/Reducers';
+import React from "react";
 
 const List = styled.ul`
   margin-top: 25px;
