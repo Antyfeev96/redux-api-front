@@ -1,10 +1,16 @@
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux'
-import { editItem, changeEditedId, removeItem } from '../../Reducers/Reducers';
+import {editItem, changeEditedId, removeItem, setList} from '../../Reducers/Reducers';
 import React from "react";
+import API from "../../API";
+
+const api = new API();
 
 const List = styled.ul`
   margin-top: 25px;
+  padding: 15px;
+  border: 1px solid black;
+  border-radius: 5px;
 
   & .item:nth-of-type(n + 2) {
     margin-top: 15px;
@@ -18,8 +24,12 @@ const List = styled.ul`
 `
 
 export default function ItemsList() {
-  const list = useSelector(state => state.toolkit.filterString === '' ? state.toolkit.list : state.toolkit.filteredList);
+  const state = useSelector(state => state.myState);
   const dispatch = useDispatch();
+  api.fetchItems().then(value => {
+    dispatch(setList(value))
+  });
+
 
   const handleEdit = (name, value, id) => {
     dispatch(editItem({ name, value }));
@@ -32,7 +42,7 @@ export default function ItemsList() {
 
   return (
    <List>
-     {list.map(item => 
+     {state.list.map(item =>
         <li key={item.id} className="item">
         {item.name} {item.price} <span>₽</span> 
         <button onClick={() => handleEdit(item.name, item.price, item.id)}>✎</button>

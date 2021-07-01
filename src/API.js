@@ -1,5 +1,4 @@
 export default class API {
-  public url: string;
   constructor() {
     this.url = 'http://localhost:7070/api';
   }
@@ -13,7 +12,7 @@ export default class API {
     }
   }
 
-  async deleteItem(id: number) {
+  async deleteItem(id) {
     try {
       const response = await fetch(`${this.url}/services/${id}`, {
         method: 'DELETE',
@@ -21,6 +20,15 @@ export default class API {
           'Content-Type': 'application/json'
         },
       });
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  async getItem(id) {
+    try {
+      const response = await fetch(`${this.url}/services/${id}`);
+      return await response.json();
     } catch (e) {
       console.log(e)
     }

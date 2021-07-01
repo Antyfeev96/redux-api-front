@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import styled from 'styled-components';
 import React from "react";
 import MainPage from "./Components/MainPage/MainPage";
-import { Redirect } from "react-router";
+import { Redirect } from "react-router-dom";
 
 const Container = styled.div`
   width: 50%;

@@ -11,7 +11,7 @@ const StyledFilter = styled.div`
 `
 
 export default function Filter() {
-  const filterString = useSelector(state => state.toolkit.filterString);
+  const filterString = useSelector(state => state.myState.filterString);
   const dispatch = useDispatch();
   
   const handleFilter = event => {

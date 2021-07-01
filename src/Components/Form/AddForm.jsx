@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeInputField, changeEditedId, addItem, saveEditedItem, changeFilteredList } from '../../Reducers/Reducers';
+import React from "react";
 
 const Form = styled.form`
   display: flex;
@@ -17,7 +18,8 @@ const Button = styled.button`
 `
 
 export default function AddForm() {
-  const state = useSelector(state => state.toolkit);
+  const state = useSelector(state => state.myState);
+  console.log(state)
   const dispatch = useDispatch();
 
   const clearInputs = () => {
@@ -25,15 +27,15 @@ export default function AddForm() {
     dispatch(changeInputField({ name: 'price', value: '' }));
   }
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
     dispatch(changeInputField({ name, value }));
   }
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     const { name, price } = state
-    dispatch(addItem({ name, price }));
+    dispatch(addItem(state,{ name, price }));
     dispatch(changeFilteredList())
     clearInputs();
   }
