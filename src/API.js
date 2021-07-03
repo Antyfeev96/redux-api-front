@@ -5,8 +5,7 @@ export default class API {
 
   async fetchItems() {
     try {
-      const response = await fetch(`${this.url}/services`);
-      return await response.json();
+      return await fetch(`${this.url}/services`);
     } catch (e) {
       console.log(e)
     }
@@ -14,7 +13,7 @@ export default class API {
 
   async deleteItem(id) {
     try {
-      const response = await fetch(`${this.url}/services/${id}`, {
+      await fetch(`${this.url}/services/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
@@ -27,8 +26,7 @@ export default class API {
 
   async getItem(id) {
     try {
-      const response = await fetch(`${this.url}/services/${id}`);
-      return await response.json();
+      return await fetch(`${this.url}/services/${id}`);
     } catch (e) {
       console.log(e)
     }

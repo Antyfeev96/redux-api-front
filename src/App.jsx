@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import React from "react";
 import MainPage from "./Components/MainPage/MainPage";
 import { Redirect } from "react-router-dom";
+import EditForm from "./Components/Form/EditForm";
+import API from "./API";
 
 const Container = styled.div`
   width: 50%;
@@ -16,6 +18,9 @@ function App() {
       <Container className="app">
         <Redirect to="/services" />
         <Switch>
+            <Route path='/services/:id'>
+                <EditForm/>
+            </Route>
             <Route path='/services'>
               <MainPage />
             </Route>
