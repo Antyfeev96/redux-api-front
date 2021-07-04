@@ -5,7 +5,6 @@ import {
   fetchServicesRequest,
   fetchServicesSuccess,
   fetchServicesError,
-  fetchServiceSuccess
 } from '../../Reducers/Reducers';
 import React, { useEffect } from "react";
 import API from "../../API";
@@ -49,6 +48,20 @@ const fetchServices = async dispatch => {
   }
 }
 
+const deleteService = async (dispatch, id) => {
+  dispatch(fetchServicesRequest());
+  try {
+    const response = await api.deleteItem(id);;
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+    const data = await response.json();
+    dispatch(fetchServicesSuccess(data));
+  } catch(e) {
+    dispatch(fetchServicesError(e.message));
+  }
+}
+
 export default function ItemsList() {
   const state = useSelector(state => state.myState);
   const dispatch = useDispatch();
@@ -64,7 +77,7 @@ export default function ItemsList() {
   }
 
   const handleRemove = async id => {
-    await api.deleteItem(id);
+    await deleteService(dispatch, id)
   }
 
   return (

@@ -5,7 +5,6 @@ import React from "react";
 import MainPage from "./Components/MainPage/MainPage";
 import { Redirect } from "react-router-dom";
 import EditForm from "./Components/Form/EditForm";
-import API from "./API";
 
 const Container = styled.div`
   width: 50%;

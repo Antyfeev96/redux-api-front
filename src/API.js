@@ -19,6 +19,7 @@ export default class API {
           'Content-Type': 'application/json'
         },
       });
+      return await fetch(`${this.url}/services`);
     } catch (e) {
       console.log(e)
     }
@@ -27,6 +28,17 @@ export default class API {
   async getItem(id) {
     try {
       return await fetch(`${this.url}/services/${id}`);
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  async saveItem(data) {
+    try {
+      return await fetch(`${this.url}/services`, {
+        method: 'POST',
+        body: JSON.stringify(data)
+      });
     } catch (e) {
       console.log(e)
     }
