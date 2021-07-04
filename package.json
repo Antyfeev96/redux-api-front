@@ -1,6 +1,6 @@
 {
-  "homepage": "http://Antyfeev96.github.io/api-redux-front",
-  "name": "api-redux-front",
+  "homepage": "http://Antyfeev96.github.io/redux-api-front",
+  "name": "redux-api-front",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
